@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='css/rviain.css') }}" rel="stylesheet" type="text/css">
+    <title>Дневник благодарности</title>
+</head>
+<body>
+    <header>
+        <h1>Фотодневник</h1>
+    </header>
+    <main>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="photo" accept="image/*" required>
+            <textarea name="description" placeholder="Добавьте описание..."></textarea>
+            <button type="submit">Загрузить фото</button>
+        </form>
+        <div id="gallery">
+            {% for photo in photos %}
+                <div class="photo">
+                    <img src="{{ url_for('static', filename='uploads/' + photo.filename) }}" alt="{{ photo.description }}">
+                    <p>{{ photo.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/script.js')}}"></script>
+</body>
+</html>
