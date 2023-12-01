@@ -9,7 +9,7 @@
 py -m venv venv
 
 # скачиваем библиотеки flask
-.\venv\Scripts\pip.exe install flask
+.\venv\Scripts\pip.exe install flask flask flask_sqlalchemy 
 
 # запускаем server.py
 .\venv\Scripts\python.exe server.py
